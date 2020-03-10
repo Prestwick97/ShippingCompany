@@ -1,0 +1,19 @@
+@using ShippingCompany.Models; 
+
+<h1>Current Shipping Invoice</h1>
+@if (Model.Count == 0)
+{
+  <p>There are no Parcels scheduled to ship at this time.</p>
+
+}
+<ul>
+  @foreach (Parcel parcel in Model)
+  {
+    <li><strong>Item Shipped: @parcel.Name</strong></li>
+    <li>Volume: @parcel.Volume() cubic inches</li>
+    <li>Weight: @parcel.Weight lbs.</li>
+    <li>Price: $@parcel.CostToShip().00</li>
+    <br>
+  }
+</ul>
+    <a href="Parcels/new">Add Another Parcel to Shipment</a>
